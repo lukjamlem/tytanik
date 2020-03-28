@@ -4,6 +4,7 @@ const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
+const task = require('./routes/tasks')
 const logger = require('koa-logger')
 
 const index = require('./routes/index')
@@ -35,6 +36,7 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(tasks.routes(), tasks.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
